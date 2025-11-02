@@ -1,0 +1,36 @@
+import random
+
+# Emojis for choices
+emojis = {
+    'r': '🪨 Rock',
+    'p': '📄 Paper',
+    's': '✂️ Scissors'
+}
+
+choices = ('r', 'p', 's')
+
+while True:
+    user_choice = input("\nRock, paper, or scissors? (r/p/s or 'q' to quit): ").lower()
+
+    if user_choice == 'q':
+        print("👋 Thanks for playing!")
+        break
+
+    if user_choice not in choices:
+        print("❌ Invalid choice! Please enter r, p, or s.")
+        continue
+
+    computer_choice = random.choice(choices)
+
+    print(f"\nYou chose: {emojis[user_choice]}")
+    print(f"Computer chose: {emojis[computer_choice]}")
+
+    # Game logic
+    if user_choice == computer_choice:
+        print("🤝 It's a tie!")
+    elif (user_choice == 'r' and computer_choice == 's') or \
+         (user_choice == 'p' and computer_choice == 'r') or \
+         (user_choice == 's' and computer_choice == 'p'):
+        print("🎉 You win!")
+    else:
+        print("💀 You lose!")
